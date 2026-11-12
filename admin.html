@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff9f4">
+    <title>Painel de pedidos — Pedidos D'ju</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/config.js" defer></script>
+    <script src="js/admin.js" defer></script>
+</head>
+<body class="admin-page">
+    <main class="admin-login" id="admin-login">
+        <form class="admin-login-card" id="admin-login-form">
+            <a class="brand admin-login-brand" href="index.html" aria-label="Pedidos D'ju, início">
+                <span class="brand-mark" aria-hidden="true">D<span>'</span>j</span>
+                <span class="brand-name">Pedidos <strong>D'ju</strong><small>PAINEL DA CONFEITARIA</small></span>
+            </a>
+            <span class="eyebrow">ÁREA RESTRITA</span>
+            <h1>Acesso ao painel</h1>
+            <p>Digite a senha e depois entre na conta Google autorizada para consultar os pedidos.</p>
+            <label class="admin-password-label" for="admin-password">Senha</label>
+            <input id="admin-password" name="password" type="password" autocomplete="current-password" required autofocus>
+            <p class="admin-login-error" id="admin-login-error" role="alert" hidden>Senha incorreta. Tente novamente.</p>
+            <button class="button button-primary" type="submit">Entrar no painel <span aria-hidden="true">↗</span></button>
+            <a class="admin-login-back" href="index.html">Voltar à loja</a>
+        </form>
+    </main>
+    <div class="admin-layout" id="admin-layout" hidden>
+        <aside class="admin-sidebar">
+            <a class="brand sidebar-brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true">D<span>'</span>j</span>
+                <span class="brand-name">Pedidos <strong>D'ju</strong><small>PAINEL DA CONFEITARIA</small></span>
+            </a>
+            <div class="sidebar-label">MENU PRINCIPAL</div>
+            <a class="sidebar-link active" href="#acesso-planilha"><span>▤</span> Pedidos</a>
+            <div class="sidebar-bottom">
+                <div class="sidebar-tip"><span>✿</span><strong>Um dia de cada vez</strong><p>Faça cada encomenda com o carinho de sempre.</p></div>
+                <a class="sidebar-link" href="index.html"><span>↗</span> Ver página da loja</a>
+            </div>
+        </aside>
+
+        <main class="admin-main" id="visao-geral">
+            <header class="admin-topbar">
+                <div class="admin-mobile-brand"><span class="brand-mark" aria-hidden="true">D<span>'</span>j</span><strong>Pedidos D'ju</strong></div>
+                <div class="admin-breadcrumb">Painel <span>/</span> <strong>Visão geral</strong></div>
+                <div class="admin-top-actions">
+                    <span class="today-label" id="today-label"></span>
+                    <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro ou escuro" title="Alternar tema">◐</button>
+                    <span class="avatar">D</span>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <section class="admin-welcome">
+                    <div><span class="eyebrow">ÁREA ADMINISTRATIVA</span><h1>Seus pedidos, com carinho <span>♡</span></h1><p>Acesse a planilha para consultar e administrar as solicitações recebidas.</p></div>
+                </section>
+
+                <section class="panel private-sheets admin-sheet-card" id="acesso-planilha">
+                    <div class="admin-sheet-icon" aria-hidden="true">🔒</div>
+                    <div class="admin-sheet-copy">
+                        <span class="eyebrow">ACESSO RESTRITO PELO GOOGLE</span>
+                        <h2>Planilha de pedidos</h2>
+                        <p>Ao continuar, o Google solicitará que você entre na sua conta. Somente as contas autorizadas nas permissões da planilha poderão ver os pedidos.</p>
+                        <a id="orders-sheet-link" class="button button-primary admin-sheet-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Acessar com Google <span aria-hidden="true">↗</span></a>
+                        <span class="sheet-link-help" id="sheet-link-help">O link da planilha ainda não foi configurado.</span>
+                    </div>
+                </section>
+                <div class="admin-security-note"><span aria-hidden="true">✦</span><p><strong>Acesso seguro:</strong> o controle de acesso aos dados é feito pelas permissões da planilha Google. Adicione os e-mails autorizados e mantenha o compartilhamento geral como “Restrito”.</p></div>
+                <footer class="admin-footer">Feito com carinho para <strong>Pedidos D'ju</strong> <span>♡</span></footer>
+            </div>
+        </main>
+    </div>
+    <div class="toast" id="admin-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
