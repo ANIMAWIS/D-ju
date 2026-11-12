@@ -1,12 +1,12 @@
 :root {
-    --ink: #3b2b2b;
+    --ink: #89da9d;
     --muted: #897a75;
     --paper: #fffaf6;
-    --surface: #fff;
-    --rose: #ce786d;
-    --rose-dark: #ad5c53;
+    --surface: #c2f0da;
+    --rose: #b2f7c3;
+    --rose-dark: #56c789;
     --rose-pale: #f9e9e3;
-    --peach: #f6e5d9;
+    --peach: #fcfaf9;
     --line: #eee5df;
     --shadow: 0 15px 40px rgba(79, 47, 40, .07);
 }
@@ -22,7 +22,7 @@ button, input, select { font: inherit; }
 .site-nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
 .brand-mark { width: 43px; height: 43px; display: flex; align-items: center; justify-content: center; border: 1px solid #d8a69b; border-radius: 50%; color: var(--rose-dark); font-family: "Playfair Display", serif; font-size: 19px; font-style: italic; letter-spacing: -3px; padding-right: 3px; }
-.brand-mark span { color: #d3a661; }
+.brand-mark span { color: #caa670; }
 .brand-name { display: flex; flex-direction: column; color: var(--ink); font-family: "Playfair Display", serif; font-size: 17px; line-height: 1.15; }
 .brand-name strong { font-weight: 700; }
 .brand-name small { margin-top: 5px; color: var(--muted); font: 600 8px "DM Sans", sans-serif; letter-spacing: 1.4px; }
@@ -253,7 +253,7 @@ h1, h2, h3, p { margin-top: 0; }
 .sidebar-link { min-height: 42px; display: flex; align-items: center; gap: 12px; margin: 2px 0; padding: 0 12px; border-radius: 5px; color: var(--admin-muted); font-size: 11px; }
 .sidebar-link > span:first-child { width: 15px; color: #b18176; font-size: 17px; text-align: center; }
 .sidebar-link.active { background: #fbf0ec; color: #9e594e; font-weight: 700; }
-.admin-page[data-theme="dark"] .sidebar-link.active { background: #493536; color: #f2b1a3; }
+.admin-page[data-theme="dark"] .sidebar-link.active { background: #a88a8b; color: #f2b1a3; }
 .sidebar-count { min-width: 20px; height: 20px; display: grid; place-items: center; margin-left: auto; border-radius: 50%; background: #f4e2db; color: #9e594e; font-size: 9px; }
 .sidebar-bottom { margin-top: auto; }
 .sidebar-tip { margin: 0 3px 19px; padding: 15px 13px; border: 1px solid var(--admin-line); border-radius: 6px; background: var(--admin-bg); }
