@@ -1,0 +1,149 @@
+PEDIDOS D'JU — ROTEIRO PARA GOOGLE FORMS
+=========================================
+
+OBJETIVO
+Receber pedidos de clientes para a confeitaria. Este e o unico formulario publico: nao e necessario criar um formulario separado para cadastro de clientes.
+
+INTEGRACAO COM A PAGINA PERSONALIZADA
+A pagina pedidos.html exibe os campos com a identidade visual da Pedidos D'ju e envia as respostas ao Google Forms em segundo plano. O cliente nao precisa abrir a interface do Google Forms.
+
+Para manter a integracao funcionando, mantenha no formulario as perguntas correspondentes a:
+- Nome
+- Whatsapp
+- Produto
+- Quantidade
+- Subtotal estimado do pedido (resposta curta, na mesma secao de Produto e Quantidade)
+- entrega ou retirada?
+- Metodo de pagamento
+- rua, bairro e numero da casa
+- ponto de referencia e localizacao (opcionais)
+
+Os IDs dessas perguntas estao configurados em js/config.js. O checkout calcula o subtotal estimado da cesta e envia esse valor para a pergunta "subtotal". Se uma pergunta for apagada e criada novamente, atualize o ID correspondente nesse arquivo. Para retirada, a pagina envia "Nao se aplica - retirada na confeitaria" nos campos de endereco obrigatorios do formulario.
+
+TITULO DO FORMULARIO
+Encomende com a Pedidos D'ju
+
+DESCRICAO DO FORMULARIO
+Que alegria ter voce por aqui! Preencha os dados abaixo para solicitar seu pedido.
+Confira o cardapio e os precos atuais em:
+https://delivery.yooga.app/dju-confeitaria/tabs/home
+
+Este formulario registra uma solicitacao. Seu pedido so estara confirmado depois que a equipe da D'ju entrar em contato e confirmar disponibilidade, valor final, pagamento e entrega ou retirada.
+Produtos com preco "a partir de" ou que permitem escolher sabores/adicionais podem ter valor final diferente. A equipe confirmara os detalhes antes de preparar o pedido.
+
+
+SECAO 1 — SEUS DADOS
+--------------------
+
+1. Nome completo
+   Tipo: Resposta curta
+   Obrigatoria: Sim
+
+2. WhatsApp com DDD
+   Tipo: Resposta curta
+   Obrigatoria: Sim
+   Descricao: Informe um numero com WhatsApp para podermos confirmar seu pedido.
+   Validacao sugerida: Numero de telefone, se disponivel; caso contrario, texto.
+
+3. E-mail para receber o resumo do pedido (opcional)
+   Tipo: Resposta curta
+   Obrigatoria: Nao
+   Validacao sugerida: Endereco de e-mail.
+
+
+SECAO 2 — O QUE VOCE GOSTARIA DE PEDIR?
+---------------------------------------
+
+4. Quais produtos voce gostaria de pedir?
+   Tipo: Paragrafo
+   Obrigatoria: Sim
+   Descricao:
+   Consulte o cardapio no link informado no inicio e escreva um produto por linha.
+   Para cada item, informe nome, quantidade e sabor, tamanho ou variacao desejada.
+
+   Exemplo:
+   2x Bolo gelado | Coco com abacaxi
+   1x Naked Cake | Mini | sabor chocolate com morango
+   6x Coxinha | Frango com requeijao
+
+   Dica: se nao souber o sabor, tamanho ou adicional, escreva "quero ajuda para escolher".
+
+5. O pedido tem alguma personalizacao?
+   Tipo: Paragrafo
+   Obrigatoria: Nao
+   Descricao: Informe tema, frase para decoracao, cores, sabores, recheios ou outros detalhes. Para bolos personalizados, descreva o que imaginou.
+
+6. Existe alguma alergia, intolerancia ou restricao alimentar que devemos conhecer?
+   Tipo: Paragrafo
+   Obrigatoria: Sim
+   Descricao: Se nao houver, escreva "Nao". Avise sobre alergias e restricoes. A equipe confirmara se consegue atender com seguranca.
+
+
+SECAO 3 — ENTREGA OU RETIRADA
+-----------------------------
+
+7. Como prefere receber o pedido?
+   Tipo: Multipla escolha
+   Obrigatoria: Sim
+   Opcoes:
+   - Retirar na confeitaria
+   - Consultar disponibilidade de entrega
+
+8. Endereco para entrega
+   Tipo: Paragrafo
+   Obrigatoria: Nao
+   Descricao: Preencha somente se deseja entrega. Informe rua, numero, bairro, cidade e ponto de referencia. A entrega e a taxa dependem da confirmacao da equipe.
+
+9. Data desejada
+   Tipo: Data
+   Obrigatoria: Sim
+   Descricao: Informe a data em que gostaria de receber ou retirar o pedido. A data depende de disponibilidade e sera confirmada pela equipe.
+
+10. Horario ou periodo preferido
+    Tipo: Resposta curta
+    Obrigatoria: Sim
+    Descricao: Exemplo: depois das 14h, entre 15h e 16h. O horario sera confirmado pela equipe.
+
+
+SECAO 4 — CONFIRMACAO
+---------------------
+
+11. Como podemos falar com voce para confirmar os detalhes?
+    Tipo: Multipla escolha
+    Obrigatoria: Sim
+    Opcoes:
+    - WhatsApp
+    - Ligacao
+    - E-mail (se informado)
+
+12. Confirmacao da solicitacao
+    Tipo: Caixas de selecao
+    Obrigatoria: Sim
+    Opcao unica:
+    - Entendi que este formulario e uma solicitacao e que meu pedido so estara confirmado depois do contato da equipe da D'ju.
+
+
+MENSAGEM DE CONFIRMACAO APOS O ENVIO
+------------------------------------
+Obrigada por enviar seu pedido para a Pedidos D'ju! Recebemos sua solicitacao.
+Nossa equipe vai entrar em contato para confirmar os itens, valores, disponibilidade, pagamento e entrega ou retirada. O envio deste formulario ainda nao confirma o pedido.
+
+
+CONFIGURACOES RECOMENDADAS NO GOOGLE FORMS
+------------------------------------------
+- Permitir que qualquer pessoa com o link responda ao formulario.
+- Nao limitar a resposta a usuarios de uma organizacao Google.
+- Nao compartilhar o resumo das respostas com os respondentes.
+- Nao exigir login Google, a menos que a D'ju decida mudar essa regra.
+- Se habilitar coleta automatica de e-mails, confirme se isso nao exige login. Caso exija, deixe a coleta automatica desligada e use a pergunta opcional de e-mail acima.
+- Vincular as respostas a uma planilha Google.
+- Na planilha de respostas, abrir Compartilhar > Acesso geral e selecionar "Restrito".
+- Adicionar individualmente apenas os e-mails autorizados. Use Editor para quem administra os pedidos e Leitor para quem apenas consulta.
+- Nao usar "Publicar na web", CSV publico ou qualquer link que permita leitura sem autorizacao.
+- Enviar uma resposta de teste e conferir se as colunas da planilha ficaram claras antes de divulgar o formulario.
+
+OBSERVACOES
+-----------
+- Os produtos e precos do site sao uma referencia consultada no cardapio online da D'ju; confirme disponibilidade e valores atuais com a confeitaria.
+- O site envia os dados ao Google Forms; as respostas ficam associadas a planilha vinculada ao formulario.
+- A planilha deve permanecer restrita aos e-mails autorizados. Compartilhar a planilha nao torna o formulario privado: sao configuracoes separadas.
