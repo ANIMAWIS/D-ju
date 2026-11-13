@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toast = document.getElementById('site-toast');
     const products = window.DJU_PRODUCTS || [];
+    const catalogProducts = products.filter(product => product.category !== "Comemore com a D'Ju");
     const cartStorageKey = 'pedidosDjuCart';
     let toastTimer;
     let activeCategory = 'Todas';
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProducts() {
         const searchTerm = document.getElementById('product-search').value.trim().toLocaleLowerCase('pt-BR');
-        const visibleProducts = products.filter(product => {
+        const visibleProducts = catalogProducts.filter(product => {
             const matchesCategory = activeCategory === 'Todas' || product.category === activeCategory;
             const matchesSearch = `${product.name} ${product.category} ${product.description}`.toLocaleLowerCase('pt-BR').includes(searchTerm);
             return matchesCategory && matchesSearch;
@@ -98,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderCategories() {
-        const categories = ['Todas', ...new Set(products.map(product => product.category))];
+        const categories = ['Todas', ...new Set(catalogProducts.map(product => product.category))];
         document.getElementById('product-categories').innerHTML = categories.map(category => {
-            const count = category === 'Todas' ? products.length : products.filter(product => product.category === category).length;
+            const count = category === 'Todas' ? catalogProducts.length : catalogProducts.filter(product => product.category === category).length;
             return `<button type="button" class="category-chip ${category === activeCategory ? 'active' : ''}" data-category="${escapeHtml(category)}" aria-pressed="${category === activeCategory}">${escapeHtml(category)} <span>${count}</span></button>`;
         }).join('');
     }

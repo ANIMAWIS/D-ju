@@ -1,0 +1,61 @@
+PEDIDOS D'JU — FORMULÁRIO DE ENCOMENDAS
+========================================
+
+OBJETIVO
+Receber solicitações do menu de encomendas, separado do cardápio diário. O calendário personalizado do site envia a data desejada, com antecedência mínima de 2 dias.
+
+MENU DE ENCOMENDAS
+https://lojacoite.my.canva.site/menu-de-encomendas
+
+O site apresenta links separados para doces de festa, bolos de festa, sobremesas, tortas salgadas, salgados e informações essenciais. Os itens deste menu são somente sob encomenda e para retirada na confeitaria.
+
+TITULO
+Encomendas especiais — Pedidos D'ju
+
+DESCRICAO
+Consulte as categorias do menu no link acima e informe os produtos, quantidades, sabores e tamanhos desejados.
+
+As solicitações não confirmam nem reservam a data. A equipe da D'ju entrará em contato para confirmar disponibilidade, itens, valores e condições de pagamento. A data só será reservada após a confirmação da equipe e do pagamento do sinal combinado.
+
+PERGUNTAS
+---------
+
+1. Nome completo
+   Tipo: Resposta curta
+   Obrigatoria: Sim
+
+2. WhatsApp com DDD
+   Tipo: Resposta curta
+   Obrigatoria: Sim
+
+3. O que gostaria de encomendar?
+   Tipo: Paragrafo
+   Obrigatoria: Sim
+   Descricao: Informe os produtos, quantidades, sabores, tamanhos e variacoes escolhidos nos menus.
+
+4. Data desejada para retirada
+   Tipo: Data
+   Obrigatoria: Sim
+   Descricao: O calendario do site permite escolher datas com pelo menos 2 dias de antecedencia. A data depende de confirmacao da equipe.
+
+5. Forma de pagamento pretendida
+   Tipo: Multipla escolha
+   Obrigatoria no site: Sim
+   Opcoes no formulario:
+   - pix
+   - dinheiro em especie
+   - cartão de credito
+
+   Os detalhes adicionais preenchidos no site sao enviados junto com a resposta de produtos, pois este formulario nao tem uma pergunta separada para eles.
+
+INTEGRACAO
+-----------
+O link publicado e os IDs das cinco perguntas deste formulario ja estao configurados em `js/config.js`. Se alterar a ordem, o texto, o tipo ou as opcoes das perguntas, atualize tambem `encomendasFormEntries` e o mapeamento de pagamento em `js/encomendas.js`.
+
+Vincule as respostas deste formulario a planilha usada pela area administrativa, para que as encomendas e datas aparecam em uma aba propria da planilha. Mantenha o acesso geral da planilha como Restrito e autorize apenas as contas da equipe.
+
+INFORMACOES IMPORTANTES
+-----------------------
+- Os itens deste menu sao somente para retirada; nao oferecer entrega no formulario.
+- O pedido so fica confirmado depois do contato da equipe e da confirmacao do pagamento.
+- Consulte a pagina de informacoes essenciais do menu para conhecer as regras de reserva, alteracao, cancelamento e transporte.

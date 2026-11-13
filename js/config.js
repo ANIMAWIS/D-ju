@@ -17,5 +17,13 @@ window.PEDIDOS_DJU_CONFIG = {
         reference: '793568634',
         location: '2045221316'
     },
-    ordersSheetUrl: 'https://docs.google.com/spreadsheets/d/1koXkqHKypF3ZT4gmONAKJG-7c-gZrLz9EFsjm8Frzgs/edit?usp=sharing'
+    ordersSheetUrl: 'https://docs.google.com/spreadsheets/d/1koXkqHKypF3ZT4gmONAKJG-7c-gZrLz9EFsjm8Frzgs/edit?usp=sharing',
+    encomendasFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScy6pB6ZYVhTavaeWlVf0m_PSKJ0mklMdaQWXTx_KuhSL5SiA/viewform?usp=publish-editor',
+    encomendasFormEntries: {
+        name: '951795605',
+        whatsapp: '1429105803',
+        products: '82072512',
+        orderDate: '1004697584',
+        payment: '1964546597'
+    }
 };

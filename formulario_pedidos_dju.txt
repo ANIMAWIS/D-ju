@@ -2,7 +2,7 @@ PEDIDOS D'JU — ROTEIRO PARA GOOGLE FORMS
 =========================================
 
 OBJETIVO
-Receber pedidos de clientes para a confeitaria. Este e o unico formulario publico: nao e necessario criar um formulario separado para cadastro de clientes.
+Receber pedidos dos produtos do cardapio diario. As encomendas especiais tem menu e fluxo proprios; consulte formulario_encomendas_dju.txt.
 
 INTEGRACAO COM A PAGINA PERSONALIZADA
 A pagina pedidos.html exibe os campos com a identidade visual da Pedidos D'ju e envia as respostas ao Google Forms em segundo plano. O cliente nao precisa abrir a interface do Google Forms.
@@ -18,10 +18,10 @@ Para manter a integracao funcionando, mantenha no formulario as perguntas corres
 - rua, bairro e numero da casa
 - ponto de referencia e localizacao (opcionais)
 
-Os IDs dessas perguntas estao configurados em js/config.js. O checkout calcula o subtotal estimado da cesta e envia esse valor para a pergunta "subtotal". Se uma pergunta for apagada e criada novamente, atualize o ID correspondente nesse arquivo. Para retirada, a pagina envia "Nao se aplica - retirada na confeitaria" nos campos de endereco obrigatorios do formulario.
+Os IDs dessas perguntas estao configurados em js/config.js. O checkout calcula o subtotal estimado da cesta e envia esse valor para a pergunta "subtotal". Se uma pergunta for apagada e criada novamente, atualize o ID correspondente nesse arquivo. Para retirada, a pagina envia "Nao se aplica - retirada na confeitaria" nos campos de endereco obrigatorios do formulario. A data das encomendas especiais e enviada pelo formulario separado da pagina encomendas.html.
 
 TITULO DO FORMULARIO
-Encomende com a Pedidos D'ju
+Pedido do cardapio diario — Pedidos D'ju
 
 DESCRICAO DO FORMULARIO
 Que alegria ter voce por aqui! Preencha os dados abaixo para solicitar seu pedido.
@@ -94,21 +94,10 @@ SECAO 3 — ENTREGA OU RETIRADA
    Obrigatoria: Nao
    Descricao: Preencha somente se deseja entrega. Informe rua, numero, bairro, cidade e ponto de referencia. A entrega e a taxa dependem da confirmacao da equipe.
 
-9. Data desejada
-   Tipo: Data
-   Obrigatoria: Sim
-   Descricao: Informe a data em que gostaria de receber ou retirar o pedido. A data depende de disponibilidade e sera confirmada pela equipe.
-
-10. Horario ou periodo preferido
-    Tipo: Resposta curta
-    Obrigatoria: Sim
-    Descricao: Exemplo: depois das 14h, entre 15h e 16h. O horario sera confirmado pela equipe.
-
-
 SECAO 4 — CONFIRMACAO
----------------------
+----------------------
 
-11. Como podemos falar com voce para confirmar os detalhes?
+9. Como podemos falar com voce para confirmar os detalhes?
     Tipo: Multipla escolha
     Obrigatoria: Sim
     Opcoes:
@@ -116,7 +105,7 @@ SECAO 4 — CONFIRMACAO
     - Ligacao
     - E-mail (se informado)
 
-12. Confirmacao da solicitacao
+10. Confirmacao da solicitacao
     Tipo: Caixas de selecao
     Obrigatoria: Sim
     Opcao unica:
@@ -144,6 +133,6 @@ CONFIGURACOES RECOMENDADAS NO GOOGLE FORMS
 
 OBSERVACOES
 -----------
-- Os produtos e precos do site sao uma referencia consultada no cardapio online da D'ju; confirme disponibilidade e valores atuais com a confeitaria.
+- Os produtos e precos do cardapio diario sao uma referencia consultada no cardapio online da D'ju; confirme disponibilidade e valores atuais com a confeitaria.
 - O site envia os dados ao Google Forms; as respostas ficam associadas a planilha vinculada ao formulario.
 - A planilha deve permanecer restrita aos e-mails autorizados. Compartilhar a planilha nao torna o formulario privado: sao configuracoes separadas.

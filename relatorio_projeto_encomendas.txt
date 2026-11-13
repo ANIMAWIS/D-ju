@@ -1,0 +1,305 @@
+RELATORIO DO PROJETO - PEDIDOS D'JU
+Encomendas especiais, catalogo, calendario e integracao
+Data de atualizacao deste relatorio: 12/11/2026
+
+======================================================================
+1. OBJETIVO DO TRABALHO
+======================================================================
+
+O projeto adiciona ao site da Pedidos D'ju um fluxo de encomendas
+especiais separado do cardapio diario. O cliente pode consultar os
+produtos e precos do menu de encomendas, escolher as opcoes e quantidades,
+ver um total estimado, selecionar uma data de retirada com antecedencia
+minima de dois dias e enviar a solicitacao por um Google Forms proprio.
+
+O pedido e uma solicitacao, nao uma reserva automatica. A equipe ainda
+precisa confirmar disponibilidade, itens, valor final e pagamento.
+
+======================================================================
+2. HISTORICO DAS ATUALIZACOES
+======================================================================
+
+2.1. Criacao de um fluxo separado para encomendas
+
+Solicitacao:
+- Criar uma secao de encomendas com calendario personalizado.
+- Impedir datas com menos de dois dias de antecedencia.
+- Separar encomendas do pedido comum do cardapio.
+
+Implementacao:
+- Foi criada a pagina encomendas.html, independente da pagina do
+  cardapio diario.
+- A pagina tem catalogo, busca, filtros por categoria, selecao de itens,
+  formulario, calendario e envio em segundo plano ao Google Forms.
+- O checkout diario em pedidos.html foi mantido separado e nao mostra o
+  calendario de encomendas.
+- A data minima e calculada com base na data local do navegador mais dois
+  dias. Datas anteriores ficam desativadas no calendario.
+- A data e validada novamente na hora do envio. Isso evita aceitar uma
+  data que deixou de cumprir o prazo enquanto a pagina permanecia aberta.
+- A data escolhida e enviada no campo proprio do formulario de
+  encomendas.
+
+Arquivos relacionados:
+- encomendas.html
+- js/encomendas.js
+- pedidos.html
+- js/order.js
+- css/style.css
+
+2.2. Separacao do menu de encomendas e do cardapio diario
+
+Solicitacao:
+- O menu de encomendas deve ser diferente do cardapio e permanecer
+  separado.
+- Foi fornecido como fonte o menu:
+  https://lojacoite.my.canva.site/menu-de-encomendas
+
+Implementacao:
+- A pagina inicial ganhou uma secao "Menu de encomendas", com links
+  separados para as categorias do Canva e um botao para abrir o catalogo
+  completo no site.
+- A categoria "Comemore com a D'Ju", relacionada ao menu de encomendas,
+  foi ocultada do catalogo diario para nao misturar os dois fluxos.
+- A alteracao preserva os itens ja salvos no carrinho diario.
+- Os produtos especiais nao foram adicionados ao formulario de pedido do
+  cardapio diario.
+
+Arquivos relacionados:
+- index.html
+- js/script.js
+- encomendas.html
+- pedidos.html
+- js/order.js
+
+2.3. Catalogo, informacoes, precos e imagens
+
+Solicitacao:
+- Atualizar os precos e incluir informacoes de cada produto do menu de
+  encomendas, com imagens quando disponiveis.
+
+Como foi feito:
+- Foram consultadas as paginas publicas do menu Canva e suas categorias.
+- Os dados foram organizados em um arquivo JavaScript separado para
+  facilitar futuras atualizacoes sem misturar catalogos.
+- O catalogo contem 23 produtos em cinco categorias:
+    Doces de festa: 7
+    Bolos de festa: 3
+    Sobremesas: 6
+    Tortas salgadas: 6
+    Salgados: 1
+- Cada produto tem categoria, nome, descricao, preco exibido, URL da
+  categoria de origem e, quando havia imagem adequada, referencia direta
+  para a imagem publica do menu.
+- Foram adicionadas 15 referencias diretas a imagens. Nos itens sem uma
+  foto individual disponivel foi usado um icone, e o card mantem o link
+  para as fotos do menu original.
+- As informacoes incluem, conforme o produto, tamanhos, rendimento,
+  sabores, variacoes, quantidades minimas e observacoes alimentares.
+- O filtro por categoria e a busca permitem localizar os produtos sem
+  alterar o catalogo diario.
+- Os precos foram consultados em 12/11/2026. Como sao dados estaticos,
+  podem precisar de atualizacao se a confeitaria mudar o menu.
+
+Categorias do menu original:
+- Doces de festa
+- Bolos de festa
+- Sobremesas
+- Tortas salgadas
+- Salgados
+- Informacoes essenciais
+
+Fontes publicas:
+- https://lojacoite.my.canva.site/menu-de-encomendas
+- https://lojacoite.my.canva.site/doces-de-festa
+- https://lojacoite.my.canva.site/bolodefesta
+- https://lojacoite.my.canva.site/sobremesasdju
+- https://lojacoite.my.canva.site/tortas-salgadas
+- https://lojacoite.my.canva.site/salgadosdjuconfeitaria
+- https://lojacoite.my.canva.site/informacoes-essenciais
+
+Observacao sobre prazos:
+- O menu de informacoes essenciais do Canva pode apresentar prazo maior
+  para algumas categorias, incluindo cinco dias.
+- O site usa o prazo minimo de dois dias conforme confirmado pelo cliente,
+  mas informa que toda data depende da disponibilidade e da confirmacao
+  da equipe. A fonte externa deve ser revisada pela confeitaria para
+  evitar informacoes divergentes.
+
+Arquivo de dados:
+- js/encomendas-products.js
+
+2.4. Integracao com o Google Forms de encomendas
+
+Solicitacao:
+- O formulario seria criado pelo cliente e o link seria enviado depois.
+
+Implementacao apos o recebimento do link:
+- O link publicado foi configurado em js/config.js.
+- Os cinco campos existentes no formulario foram identificados e seus
+  IDs numericos foram configurados:
+    Nome completo: 951795605
+    WhatsApp com DDD: 1429105803
+    O que gostaria de encomendar?: 82072512
+    Data desejada para retirada: 1004697584
+    Forma de pagamento pretendida: 1964546597
+- O site transforma o endereco /viewform do Google em /formResponse e
+  envia os dados em um iframe oculto, mantendo o cliente na pagina.
+- Os valores de pagamento do site sao convertidos para corresponder
+  exatamente as opcoes do formulario:
+    Pix -> pix
+    Dinheiro/espécie -> dinheiro em especie
+    Cartao de credito -> cartão de credito
+- O formulario publicado nao tem pergunta separada para detalhes
+  adicionais. Por isso, o texto preenchido nesse campo no site e anexado
+  a resposta "O que gostaria de encomendar?".
+- A data selecionada e enviada no formato aceito pelo campo de data do
+  Google Forms.
+- O formulario do cardapio diario continua usando sua URL e seus IDs
+  proprios; a configuracao das encomendas nao substitui essa integracao.
+
+URL configurada:
+https://docs.google.com/forms/d/e/1FAIpQLScy6pB6ZYVhTavaeWlVf0m_PSKJ0mklMdaQWXTx_KuhSL5SiA/viewform?usp=publish-editor
+
+Ponto de atencao sobre a planilha:
+- O link publico do formulario permite identificar as perguntas, mas nao
+  permite verificar a qual planilha as respostas estao vinculadas.
+- Para as encomendas aparecerem na area administrativa, o proprietario do
+  formulario deve vincular as respostas a planilha usada pelo painel e
+  manter as encomendas em uma aba propria.
+- A planilha deve permanecer restrita as contas autorizadas da equipe.
+
+Arquivos relacionados:
+- js/config.js
+- js/encomendas.js
+- formulario_encomendas_dju.txt
+- admin.html
+
+2.5. Selecao automatica de produtos, quantidades e valores
+
+Solicitacao:
+- Ao selecionar uma opcao do menu, preencher automaticamente o campo
+  "O que gostaria de encomendar?" e atualizar o valor abaixo.
+- Para produtos com quantidade minima, permitir informar as unidades.
+
+Implementacao:
+- Cada card do catalogo tem controles para escolher a variacao, informar
+  quantidade e marcar "Adicionar ao pedido".
+- As opcoes com preco proprio, como tamanhos de bolos e variacoes de
+  recheio, possuem um seletor de opcoes.
+- Produtos vendidos por unidade, com minimo informado no menu, permitem
+  definir a quantidade. O sistema impede quantidades menores que o minimo.
+- Para cupcakes, por exemplo, o minimo e 10 unidades; para tortinhas,
+  brownies e alfajores, o minimo e 25 unidades.
+- Para brigadeiros, que tem precos publicados por faixas de 25, 50 e 100
+  unidades, o cliente escolhe uma dessas faixas e pode indicar numero de
+  pacotes. O calculo usa o preco publicado para a faixa selecionada.
+- Itens de preco fixo tambem permitem alterar a quantidade de pedidos.
+- O valor por opcao e calculado com os dados estruturados de cada produto.
+  O formato monetario segue pt-BR e BRL.
+- O resumo abaixo do campo mostra a quantidade de produtos selecionados e
+  o total estimado.
+- O campo "O que gostaria de encomendar?" e preenchido automaticamente
+  com nome, opcao, quantidade, preco por item e total estimado. Ele fica
+  somente para leitura para evitar divergencia entre o texto e o calculo.
+- O total e os itens calculados tambem sao incluidos na resposta enviada
+  ao Google Forms.
+- O cliente ainda pode informar sabores, recheios, temas e
+  personalizacoes no campo de detalhes adicionais.
+- O formulario nao pode ser enviado sem pelo menos um item selecionado.
+- Os valores sao estimativas; adicionais, decoracoes e confirmacoes da
+  equipe podem alterar o valor final.
+
+Como o cliente usa:
+1. Acessa o catalogo da pagina encomendas.html.
+2. Escolhe a opcao ou tamanho disponivel no card.
+3. Informa a quantidade respeitando o minimo exibido.
+4. Marca "Adicionar ao pedido".
+5. Confere o resumo e o total estimado abaixo de "O que gostaria de
+   encomendar?".
+6. Preenche detalhes adicionais, data de retirada e forma de pagamento.
+7. Envia a solicitacao para a equipe confirmar.
+
+Arquivos relacionados:
+- encomendas.html
+- js/encomendas-products.js
+- js/encomendas.js
+- css/style.css
+
+======================================================================
+3. ARQUIVOS DO PROJETO ENVOLVIDOS
+======================================================================
+
+Arquivos criados:
+- encomendas.html
+  Pagina do catalogo e formulario independente de encomendas.
+- js/encomendas-products.js
+  Dados dos produtos, precos, opcoes de preco, minimos e imagens.
+- js/encomendas.js
+  Renderizacao, filtros, selecao, calculo, calendario, validacao e envio.
+- formulario_encomendas_dju.txt
+  Especificacao do Google Forms de encomendas, campos e vinculacao da
+  planilha.
+
+Arquivos atualizados:
+- index.html
+  Entrada para o menu de encomendas e links de categorias.
+- js/script.js
+  Separacao dos itens especiais em relacao ao cardapio diario.
+- pedidos.html
+  Mantem o checkout diario sem o calendario de encomendas.
+- js/order.js
+  Mantem o envio do pedido diario independente da data de encomenda.
+- js/config.js
+  Configuracao separada dos dois Google Forms.
+- css/style.css
+  Estilos para catalogo, imagens, controles de selecao, resumo e
+  calendario.
+- admin.html
+  Explica a separacao entre respostas do cardapio e das encomendas.
+- formulario_pedidos_dju.txt
+  Documentacao do formulario do cardapio diario, separado das encomendas.
+
+======================================================================
+4. VALIDACOES REALIZADAS
+======================================================================
+
+- A pagina local carregou os 23 produtos.
+- Foram conferidos os filtros e a busca do catalogo.
+- As 15 imagens com URL direta carregaram no teste de navegador.
+- O calendario foi verificado com prazo minimo de dois dias.
+- Foi confirmado que o checkout diario nao mostra o calendario especial.
+- Os scripts JavaScript foram verificados com node --check.
+- Os 23 produtos foram validados para confirmar que possuem preco ou
+  opcoes de preco para o calculo automatico.
+- Foi testado um pedido de exemplo:
+    Brigadeiros especiais: 2 pacotes de 50 unidades = R$ 190,00
+    Tortinha de limao: 30 unidades = R$ 120,00
+    Cupcake recheado: quantidade ajustada para o minimo de 10 = R$ 80,00
+    Total estimado: R$ 390,00
+- O campo de pedido foi conferido com quantidades, precos e total.
+- O envio ao Google Forms foi simulado com o envio de rede bloqueado.
+  Foram conferidos o endereco /formResponse, o campo de produtos, a data
+  e a forma de pagamento. Nenhuma resposta real foi enviada.
+- Foi testada a tentativa de enviar sem selecionar produto; o sistema
+  mostrou uma mensagem de erro e nao preparou o envio.
+
+======================================================================
+5. PONTOS PENDENTES E MANUTENCAO
+======================================================================
+
+- Confirmar no Google Forms que as respostas estao vinculadas a planilha
+  usada pela area administrativa e em uma aba separada para encomendas.
+- Fazer um envio real de teste somente depois de confirmar o destino da
+  planilha e a autorizacao das contas da equipe.
+- Revisar no Canva a regra de antecedencia, pois o menu oficial pode
+  informar um prazo maior que os dois dias adotados pelo site.
+- Atualizar js/encomendas-products.js sempre que houver mudanca de
+  produtos, precos, quantidades minimas, tamanhos ou imagens.
+- Se forem alteradas, removidas ou reordenadas perguntas do Google Forms,
+  revisar os IDs em js/config.js e o mapeamento de pagamento em
+  js/encomendas.js.
+- A area administrativa informa como exibir as respostas, mas depende da
+  planilha estar corretamente vinculada e autorizada pelo proprietario.
+
+FIM DO RELATORIO
